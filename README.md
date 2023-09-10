@@ -1,6 +1,6 @@
 # Eternal Hub
 
-Loadstring: ```loadstring(game:httpget("https://raw.githubusercontent.com/legend16636/eternals-guis/main/eternalhubcomplete.lua"))()```
+Loadstring: ```loadstring(game:httpget("https://raw.githubusercontent.com/eternallfrost/eternal-hub/main/eternalhubcomplete.lua"))()```
 
 ## How many games it currently supports:
 * Nova Hotels
