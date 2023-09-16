@@ -4,7 +4,7 @@ Loadstring: ```loadstring(game:HttpGet("https://raw.githubusercontent.com/eterna
 
 ## How many games it currently supports:
 * Nova Hotels + Training center
-* Slap Battles + Eternal bob fight
+* Slap Battles (may be inconsistent) + Eternal bob fight
 
 ### Currently working on making support for the Slap Battles main game
 
