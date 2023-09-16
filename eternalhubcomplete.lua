@@ -523,13 +523,7 @@ elseif(game.PlaceId == 6403373529) then
 			local teleportFunc = queueonteleport or queue_on_teleport or syn and syn.queue_on_teleport
 			if teleportFunc then
 				teleportFunc([[
-					if not game:IsLoaded() then
-						game.Loaded:Wait()
-					end
-					repeat wait() until game.Players.LocalPlayer
-					game:GetService("RunService").RenderStepped:Connect(function()
-						game:GetService("GuiService"):ClearError()
-					end)
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/eternallfrost/eternal-hub/main/eternalhubcomplete.lua"))()
 				]])
 				game:GetService("TeleportService"):Teleport(9020359053)
             end
