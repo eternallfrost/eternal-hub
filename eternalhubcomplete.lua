@@ -872,6 +872,39 @@ elseif(game.PlaceId == 2778845430) then
 		end,
 	 })
 
+	 
+	 local ChangeAM = MiscTab:CreateDropdown({
+		Name = "Change character material",
+		Options = {"Plastic",
+			"SmoothPlastic",
+			"Neon",
+			"Wood",
+			"WoodPlanks",
+			"Marble",
+			"Slate",
+			"Concrete",
+			"Granite",
+			"Brick",
+			"Pebble",
+			"Cobblestone",
+			"CorrodedMetal",
+			"DiamondPlate",
+			"Foil",
+			"Metal",
+			"Grass",
+			"Sand",
+			"Fabric",
+			"Ice",
+			"ForceField"
+		},
+		CurrentOption = {"SmoothPlastic"},
+		MultipleOptions = false,
+		Flag = "ChangeChar",
+		Callback = function(Option)
+			game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SendIdleEvent"):FireServer(Option[1])
+		end,
+	 })
+
 	function isNumber(str)
 		if tonumber(str) ~= nil or str == 'inf' then
 			return true
