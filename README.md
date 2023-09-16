@@ -6,6 +6,6 @@ Loadstring: ```loadstring(game:HttpGet("https://raw.githubusercontent.com/eterna
 * Nova Hotels + Training center
 * Slap Battles (may be inconsistent) + Eternal bob fight
 
-### Currently working on making support for the Slap Battles main game
+### Currently working on making support for more games!
 
 ### Thanks for reading!
