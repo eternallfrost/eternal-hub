@@ -317,6 +317,12 @@ elseif(game.PlaceId == 4499855755) then
 	local RS = MainTab:CreateButton({
 		Name = "Rejoin server",
 		Callback = function()
+			local teleportFunc = queueonteleport or queue_on_teleport or syn and syn.queue_on_teleport
+			if teleportFunc then
+				teleportFunc([[
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/eternallfrost/eternal-hub/main/eternalhubcomplete.lua"))()
+				]])
+			end
 			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
 		end    
 	})
@@ -403,6 +409,69 @@ elseif(game.PlaceId == 4499855755) then
 			PointInfo:Set("Points: "..game:GetService("Players"):FindFirstChild(Option[1]).leaderstats.Points.Value)
 		end,
 	 })
+
+	 local farmTSW = false
+	 MiscTab:CreateKeybind({
+		Name = "Farm towels/weights",
+		CurrentKeybind = "R",
+		HoldToInteract = false,
+		Callback = function()
+			if(farmTSW == false) then
+				farmTSW = true
+				Rayfield:Notify({
+					Title = "Farming Notification",
+					Content = "Towel/weight farming is turned on",
+					Image = "",
+					Duration = 5
+				})
+				while true do
+					if(farmTSW == true) then
+						local args = {
+							[1] = "Interactable",
+							[2] = workspace:WaitForChild("GeneralInteractable"):WaitForChild("Weight")
+						}
+						
+						game:GetService("ReplicatedStorage"):WaitForChild("RemoteStorage"):WaitForChild("RemoteFunction"):InvokeServer(unpack(args))
+
+						Rayfield:Notify({
+							Title = "Farming Notification",
+							Content = "Restocking one of the weights",
+							Image = "",
+							Duration = 3
+						})
+						
+						task.wait(0.1)
+
+						local args2 = {
+							[1] = "Interactable",
+							[2] = workspace:WaitForChild("GeneralInteractable"):WaitForChild("Towel")
+						}
+						
+						game:GetService("ReplicatedStorage"):WaitForChild("RemoteStorage"):WaitForChild("RemoteFunction"):InvokeServer(unpack(args2))
+
+						Rayfield:Notify({
+							Title = "Farming Notification",
+							Content = "Refilling one of the towels",
+							Image = "",
+							Duration = 3
+						})
+						
+						task.wait(0.1)
+					else
+						break
+					end
+				end
+			else
+				farmTSW = false
+				Rayfield:Notify({
+					Title = "Farming Notification",
+					Content = "Towel/weight farming is turned off",
+					Image = "",
+					Duration = 5
+				})
+			end
+		end    
+	})
 
 	function isNumber(str)
 		if tonumber(str) ~= nil or str == 'inf' then
@@ -707,6 +776,12 @@ elseif(game.PlaceId == 6403373529) then
 	local RS = MainTab:CreateButton({
 		Name = "Rejoin server",
 		Callback = function()
+			local teleportFunc = queueonteleport or queue_on_teleport or syn and syn.queue_on_teleport
+			if teleportFunc then
+				teleportFunc([[
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/eternallfrost/eternal-hub/main/eternalhubcomplete.lua"))()
+				]])
+			end
 			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
 		end    
 	})
@@ -776,6 +851,12 @@ elseif(game.PlaceId == 2778845430) then
 	local RS = MainTab:CreateButton({
 		Name = "Rejoin server",
 		Callback = function()
+			local teleportFunc = queueonteleport or queue_on_teleport or syn and syn.queue_on_teleport
+			if teleportFunc then
+				teleportFunc([[
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/eternallfrost/eternal-hub/main/eternalhubcomplete.lua"))()
+				]])
+			end
 			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
 		end    
 	})
