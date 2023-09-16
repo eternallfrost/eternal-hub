@@ -203,11 +203,15 @@ elseif(game.PlaceId == 4499855755) then
 
 	local ScripthubTab = MainWindow:CreateTab("Scripthubs")
 
+	local MiscTab = MainWindow:CreateTab("Misc")
+
 	local PlayerTab = MainWindow:CreateTab("Player")
 
 	local ScriptHub = ScripthubTab:CreateSection("Scripthubs")
 
 	local PlayerSection = PlayerTab:CreateSection("Player")
+
+	local MiscSection = MiscTab:CreateSection("Misc")
 
 	local pointEnabled = false
 	local defaultloop = false
@@ -284,7 +288,7 @@ elseif(game.PlaceId == 4499855755) then
 
 	MainTab:CreateKeybind({
 		Name = "Freeze/Unfreeze",
-		CurrentKeybind = "E",
+		CurrentKeybind = "Q",
 		HoldToInteract = false,
 		Callback = function()
 			if(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored == false) then
@@ -334,6 +338,12 @@ elseif(game.PlaceId == 4499855755) then
 					end
 				end
 				if #servers > 0 then
+					local teleportFunc = queueonteleport or queue_on_teleport or syn and syn.queue_on_teleport
+					if teleportFunc then
+						teleportFunc([[
+							loadstring(game:HttpGet("https://raw.githubusercontent.com/eternallfrost/eternal-hub/main/eternalhubcomplete.lua"))()
+						]])
+					end
 					game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, servers[math.random(1, #servers)], Players.LocalPlayer)
 				else
 					Rayfield:Notify({
@@ -360,6 +370,39 @@ elseif(game.PlaceId == 4499855755) then
 			loadstring(game:HttpGet('https://ithinkimandrew.site/scripts/tools/dark-dex.lua'))()
 		end    
 	})
+
+	local UsernameInfo = MiscTab:CreateLabel("Nil")
+	local RankInfo = MiscTab:CreateLabel("Nil")
+	local PointInfo = MiscTab:CreateLabel("Nil")
+
+	local playersTab = {}
+
+	for _, v in pairs(game:GetService("Players"):GetPlayers()) do
+		if(v:IsA("Player")) then
+			table.insert(playersTab, v.Name)
+		end
+	end
+
+	game:GetService("Players").PlayerAdded:Connect(function(player)
+		table.insert(playersTab, player.Name)
+	end)
+
+	game:GetService("Players").PlayerRemoving:Connect(function(player)
+		table.remove(playersTab, table.find(playersTab, player.Name))
+	end)
+
+	local CheckPLR = MiscTab:CreateDropdown({
+		Name = "Select player to check info about them",
+		Options = playersTab,
+		CurrentOption = playersTab[1],
+		MultipleOptions = false,
+		Flag = "CheckInfo",
+		Callback = function(Option)
+			UsernameInfo:Set("Username: "..game:GetService("Players"):FindFirstChild(Option[1]).Name)
+			RankInfo:Set("Rank: "..game:GetService("Players"):FindFirstChild(Option[1]).leaderstats.Rank.Value)
+			PointInfo:Set("Points: "..game:GetService("Players"):FindFirstChild(Option[1]).leaderstats.Points.Value)
+		end,
+	 })
 
 	function isNumber(str)
 		if tonumber(str) ~= nil or str == 'inf' then
@@ -490,6 +533,12 @@ elseif(game.PlaceId == 6403373529) then
 					end
 				end
 				if #servers > 0 then
+					local teleportFunc = queueonteleport or queue_on_teleport or syn and syn.queue_on_teleport
+					if teleportFunc then
+						teleportFunc([[
+							loadstring(game:HttpGet("https://raw.githubusercontent.com/eternallfrost/eternal-hub/main/eternalhubcomplete.lua"))()
+						]])
+					end
 					game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, servers[math.random(1, #servers)], Players.LocalPlayer)
 				else
 					Rayfield:Notify({
@@ -572,33 +621,42 @@ elseif(game.PlaceId == 6403373529) then
 		end
 	})
 
-	MiscTab:CreateToggle({
+	MiscTab:CreateButton({
 		Name = "Bob Farm",
 		CurrentValue = false,
-		Callback =	function(BobFarm)
-			if(BobFarm == false) then
-				game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health = 0
-				repeat
-					print("2138 eternal")
-				until game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health >= 0
-				fireclickdetector(workspace.Lobby.Replica.ClickDetector)
-				task.wait(0.5)
-				while true do
-					if(BobFarm == true) then
+		Callback =	function()
+			local doneforFirst = false
+
+			game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health = 0
+			game.Players.LocalPlayer.CharacterAdded:Connect(function()
+				if(doneforFirst == false) then
+					doneforFirst = true
+					task.wait(0.5)
+					fireclickdetector(workspace.Lobby.Replica.ClickDetector)
+					task.wait(0.5)
+					game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health = 0
+				else
+					while true do
+						task.wait()
 						if game.Players.LocalPlayer.Character:FindFirstChild("entered") == nil and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
 							firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1, 0)
 							firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1, 1)
 						end
 						task.wait(0.5)
-						game:GetService('VirtualInputManager'):SendKeyEvent(true,'E',false,x)
-						task.wait(0.5)
-						game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health = 0
+						if(game.Players.LocalPlayer.Character:FindFirstChild("entered") == true) then
+							task.wait(0.5)
+							game:GetService('VirtualInputManager'):SendKeyEvent(true, 'E', false, nil)
+							task.wait(0.5)
+							game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health = 0
+							task.wait()
+						else
+							firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1, 0)
+							firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1, 1)
+							task.wait()
+						end
 					end
-					task.wait()
 				end
-			else
-
-			end
+			end)
 		end
 	})	
 
@@ -696,6 +754,8 @@ elseif(game.PlaceId == 2778845430) then
 
 	local ScripthubTab = MainWindow:CreateTab("Scripthubs")
 
+	local MiscTab = MainWindow:CreateTab("Misc")
+
 	local PlayerTab = MainWindow:CreateTab("Player")
 
 	local Main = MainTab:CreateSection("Main")
@@ -703,6 +763,8 @@ elseif(game.PlaceId == 2778845430) then
 	local ScriptHub = ScripthubTab:CreateSection("Scripthubs")
 
 	local Player = PlayerTab:CreateSection("Player")
+
+	local MiscSection = MiscTab:CreateSection("Misc")
 
 	local DG = MainTab:CreateButton({
 		Name = "Destroy GUI",
@@ -735,6 +797,12 @@ elseif(game.PlaceId == 2778845430) then
 					end
 				end
 				if #servers > 0 then
+					local teleportFunc = queueonteleport or queue_on_teleport or syn and syn.queue_on_teleport
+					if teleportFunc then
+						teleportFunc([[
+							loadstring(game:HttpGet("https://raw.githubusercontent.com/eternallfrost/eternal-hub/main/eternalhubcomplete.lua"))()
+						]])
+					end
 					game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, servers[math.random(1, #servers)], Players.LocalPlayer)
 				else
 					Rayfield:Notify({
@@ -768,6 +836,41 @@ elseif(game.PlaceId == 2778845430) then
 			loadstring(game:HttpGet('https://ithinkimandrew.site/scripts/tools/dark-dex.lua'))()
 		end    
 	})
+
+	local UsernameInfo = MiscTab:CreateLabel("Nil")
+	local RankInfo = MiscTab:CreateLabel("Nil")
+	local LocationInfo = MiscTab:CreateLabel("Nil")
+	local PointInfo = MiscTab:CreateLabel("Nil")
+
+	local playersTab = {}
+
+	for _, v in pairs(game:GetService("Players"):GetPlayers()) do
+		if(v:IsA("Player")) then
+			table.insert(playersTab, v.Name)
+		end
+	end
+
+	game:GetService("Players").PlayerAdded:Connect(function(player)
+		table.insert(playersTab, player.Name)
+	end)
+
+	game:GetService("Players").PlayerRemoving:Connect(function(player)
+		table.remove(playersTab, table.find(playersTab, player.Name))
+	end)
+
+	local CheckPLR = MiscTab:CreateDropdown({
+		Name = "Select player to check info about them",
+		Options = playersTab,
+		CurrentOption = playersTab[1],
+		MultipleOptions = false,
+		Flag = "CheckInfo",
+		Callback = function(Option)
+			UsernameInfo:Set("Username: "..game:GetService("Players"):FindFirstChild(Option[1]).Name)
+			RankInfo:Set("Rank: "..game:GetService("Players"):FindFirstChild(Option[1]).leaderstats.Rank.Value)
+			LocationInfo:Set("Location: "..game:GetService("Players"):FindFirstChild(Option[1]).CurrentRoom.Value)
+			PointInfo:Set("Points: "..game:GetService("Players"):FindFirstChild(Option[1]).leaderstats.Points.Value)
+		end,
+	 })
 
 	function isNumber(str)
 		if tonumber(str) ~= nil or str == 'inf' then
