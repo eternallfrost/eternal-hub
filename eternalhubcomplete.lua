@@ -944,7 +944,6 @@ elseif(game.PlaceId == 2778845430) then
 		Options = playersTab,
 		CurrentOption = playersTab[1],
 		MultipleOptions = false,
-		Flag = "CheckInfo",
 		Callback = function(Option)
 			UsernameInfo:Set("Username: "..game:GetService("Players"):FindFirstChild(Option[1]).Name)
 			RankInfo:Set("Rank: "..game:GetService("Players"):FindFirstChild(Option[1]).leaderstats.Rank.Value)
@@ -980,7 +979,6 @@ elseif(game.PlaceId == 2778845430) then
 		},
 		CurrentOption = {"SmoothPlastic"},
 		MultipleOptions = false,
-		Flag = "ChangeChar",
 		Callback = function(Option)
 			game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SendIdleEvent"):FireServer(Option[1])
 		end,
