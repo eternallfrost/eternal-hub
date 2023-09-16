@@ -10,6 +10,32 @@ local LocalizationService = game:GetService("LocalizationService")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
+local MainWindow = Rayfield:CreateWindow({
+	Name = "Eternal Hub - "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
+	LoadingTitle = "Eternal User interface",
+	LoadingSubtitle = "by eternallfrost",
+	ConfigurationSaving = {
+		Enabled = false,
+		FolderName = nil,
+		FileName = "eternalexploits"
+	},
+	Discord = {
+		Enabled = false,
+		Invite = "",
+		RememberJoins = true
+	},
+	KeySystem = true,
+	KeySettings = {
+		Title = "Eternal Hub - Key System",
+		Subtitle = "Key System",
+		Note = "Key link copied to clipboard",
+		FileName = "EternalExploits_Key",
+		SaveKey = true,
+		GrabKeyFromSite = true,
+		Key = {"https://pastebin.com/raw/qPr8fpY0"}
+	 }
+})
+
 if(game.PlaceId == 13833961666) then -- eternal bob
 	local bypass;
 		bypass = hookmetamethod(game, "__namecall", function(method, ...) 
@@ -22,23 +48,8 @@ if(game.PlaceId == 13833961666) then -- eternal bob
 			end
 			return bypass(method, ...)
     end)
-	
-	local MainWindow = Rayfield:CreateWindow({
-        Name = "Eternal Hub - Slap Battles Bob fight",
-        LoadingTitle = "Eternal User interface",
-        LoadingSubtitle = "by eternallfrost",
-        ConfigurationSaving = {
-            Enabled = false,
-            FolderName = nil,
-            FileName = "eternalexploits"
-        },
-        Discord = {
-            Enabled = false,
-            Invite = "",
-            RememberJoins = true
-        },
-        KeySystem = false,
-    })
+
+	setclipboard("https://link-center.net/388825/eternal-hub-keysystem")
 
 	local MainTab = MainWindow:CreateTab("Main")
 
@@ -180,22 +191,8 @@ if(game.PlaceId == 13833961666) then -- eternal bob
 elseif(game.PlaceId == 4499855755) then
 	local RemoteEvent = ReplicatedStorage.RemoteStorage.RemoteEvent
 	local cooldown = 2
-	local MainWindow = Rayfield:CreateWindow({
-        Name = "Eternal Hub - Nova Hotels",
-        LoadingTitle = "Eternal User interface",
-        LoadingSubtitle = "by eternallfrost",
-        ConfigurationSaving = {
-            Enabled = false,
-            FolderName = nil,
-            FileName = "eternalexploits"
-        },
-        Discord = {
-            Enabled = false,
-            Invite = "",
-            RememberJoins = true
-        },
-        KeySystem = false,
-    })
+
+	setclipboard("https://link-center.net/388825/eternal-hub-keysystem")
 
 	local MainTab = MainWindow:CreateTab("Main")
 
@@ -547,22 +544,8 @@ elseif(game.PlaceId == 6403373529) then
 			end
 			return bypass(method, ...)
     end)
-	local MainWindow = Rayfield:CreateWindow({
-        Name = "Eternal Hub - Slap Battles",
-        LoadingTitle = "Eternal User interface",
-        LoadingSubtitle = "by eternallfrost",
-        ConfigurationSaving = {
-            Enabled = false,
-            FolderName = nil,
-            FileName = "eternalexploits"
-        },
-        Discord = {
-            Enabled = false,
-            Invite = "",
-            RememberJoins = true
-        },
-        KeySystem = false,
-    })
+
+	setclipboard("https://link-center.net/388825/eternal-hub-keysystem")
 
 	local MainTab = MainWindow:CreateTab("Home")
 
@@ -807,22 +790,7 @@ elseif(game.PlaceId == 6403373529) then
 		end    
 	})
 elseif(game.PlaceId == 2778845430) then
-	local MainWindow = Rayfield:CreateWindow({
-		Name = "Eternal Hub - Nova Hotels Training Center",
-		LoadingTitle = "Eternal User interface",
-		LoadingSubtitle = "by eternallfrost",
-		ConfigurationSaving = {
-			Enabled = false,
-			FolderName = nil,
-			FileName = "eternalexploits"
-		},
-		Discord = {
-			Enabled = false,
-			Invite = "",
-			RememberJoins = true
-		},
-		KeySystem = false,
-	})
+	setclipboard("https://link-center.net/388825/eternal-hub-keysystem")
 
 	local MainTab = MainWindow:CreateTab("Main")
 
