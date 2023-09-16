@@ -467,25 +467,11 @@ elseif(game.PlaceId == 6403373529) then
 
 	local MiscSection = MiscTab:CreateSection("Misc")
 
-	local BadgesTab = BadgesTab:CreateSection("Badges")
+	local BadgesSection = BadgesTab:CreateSection("Badges")
 
 	local ScriptHub = ScripthubTab:CreateSection("Scripthubs")
 
-	local Player = PlayerTab:CreateSection("Player")
-
-	local DG = MainTab:CreateButton({
-		Name = "Destroy GUI",
-		Callback = function()
-			Rayfield:Destroy()
-		end    
-	})
-
-	local RS = MainTab:CreateButton({
-		Name = "Rejoin server",
-		Callback = function()
-			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
-		end    
-	})
+	local PlayerSection = PlayerTab:CreateSection("Player")
 
 	local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
 
@@ -650,6 +636,20 @@ elseif(game.PlaceId == 6403373529) then
 		Name = "Get the duck badge",
 		Callback = function()
 			fireclickdetector(workspace.Arena["default island"]:FindFirstChild("Rubber Ducky").ClickDetector)
+		end    
+	})
+
+	local DG = MainTab:CreateButton({
+		Name = "Destroy GUI",
+		Callback = function()
+			Rayfield:Destroy()
+		end    
+	})
+
+	local RS = MainTab:CreateButton({
+		Name = "Rejoin server",
+		Callback = function()
+			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
 		end    
 	})
 
