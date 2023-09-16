@@ -28,7 +28,7 @@ if(game.PlaceId == 13833961666) then -- eternal bob
         LoadingTitle = "Eternal User interface",
         LoadingSubtitle = "by eternallfrost",
         ConfigurationSaving = {
-            Enabled = true,
+            Enabled = false,
             FolderName = nil,
             FileName = "eternalexploits"
         },
@@ -185,7 +185,7 @@ elseif(game.PlaceId == 4499855755) then
         LoadingTitle = "Eternal User interface",
         LoadingSubtitle = "by eternallfrost",
         ConfigurationSaving = {
-            Enabled = true,
+            Enabled = false,
             FolderName = nil,
             FileName = "eternalexploits"
         },
@@ -552,7 +552,7 @@ elseif(game.PlaceId == 6403373529) then
         LoadingTitle = "Eternal User interface",
         LoadingSubtitle = "by eternallfrost",
         ConfigurationSaving = {
-            Enabled = true,
+            Enabled = false,
             FolderName = nil,
             FileName = "eternalexploits"
         },
@@ -812,7 +812,7 @@ elseif(game.PlaceId == 2778845430) then
 		LoadingTitle = "Eternal User interface",
 		LoadingSubtitle = "by eternallfrost",
 		ConfigurationSaving = {
-			Enabled = true,
+			Enabled = false,
 			FolderName = nil,
 			FileName = "eternalexploits"
 		},
