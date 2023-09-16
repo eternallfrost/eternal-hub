@@ -402,7 +402,6 @@ elseif(game.PlaceId == 4499855755) then
 		Options = playersTab,
 		CurrentOption = playersTab[1],
 		MultipleOptions = false,
-		Flag = "CheckInfo",
 		Callback = function(Option)
 			UsernameInfo:Set("Username: "..game:GetService("Players"):FindFirstChild(Option[1]).Name)
 			RankInfo:Set("Rank: "..game:GetService("Players"):FindFirstChild(Option[1]).leaderstats.Rank.Value)
