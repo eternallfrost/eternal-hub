@@ -1,10 +1,10 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
-
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 
 game:GetService("GuiService"):ClearError()
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local GC = getconnections or get_signal_cons
 if GC then
@@ -26,6 +26,15 @@ end
 local LocalizationService = game:GetService("LocalizationService")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local timefarmSpot = Instance.new("Part")
+timefarmSpot.Position = Vector3.new(-19755.009765625, 615.7650146484375, -168.88949584960938)
+timefarmSpot.Parent = workspace
+timefarmSpot.Name = "timefarmSpot"
+timefarmSpot.Size = Vector3.new(500,50,500)
+timefarmSpot.Anchored = true
+timefarmSpot.Transparency = .25
+timefarmSpot.CanCollide = true
 
 local MainWindow = Rayfield:CreateWindow({
 	Name = "Eternal Hub - "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
@@ -301,7 +310,7 @@ elseif(game.PlaceId == 4499855755) then
 	})
 
 	local TimeFarm = MainTab:CreateButton({
-		Name = "Time Farm",
+		Name = "Time/Gem Farm",
 		Callback = function()
 			local serverList = {}
 			for _, v in ipairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")).data) do
@@ -432,6 +441,13 @@ elseif(game.PlaceId == 4499855755) then
 		Name = "Dark Dex",
 		Callback = function()
 			loadstring(game:HttpGet('https://ithinkimandrew.site/scripts/tools/dark-dex.lua'))()
+		end    
+	})
+
+	local TPTS = ScripthubTab:CreateButton({
+		Name = "TP to safe spot",
+		Callback = function()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.timefarmSpot.CFrame * CFrame.new(0,40,0)
 		end    
 	})
 
