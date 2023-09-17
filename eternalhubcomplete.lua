@@ -337,6 +337,13 @@ elseif(game.PlaceId == 4499855755) then
 		end    
 	})
 
+	local InvisB = MainTab:CreateButton({
+		Name = "Invisibility (Press E to turn on/off)",
+		Callback = function()
+			loadstring(game:HttpGet("https://pastebin.com/raw/RPa2TVB2", true))()
+		end    
+	})
+
 	MainTab:CreateKeybind({
 		Name = "Freeze/Unfreeze",
 		CurrentKeybind = "Q",
