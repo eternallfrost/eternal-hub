@@ -444,7 +444,7 @@ elseif(game.PlaceId == 4499855755) then
 		end    
 	})
 
-	local TPTS = ScripthubTab:CreateButton({
+	local TPTS = MiscTab:CreateButton({
 		Name = "TP to safe spot",
 		Callback = function()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.timefarmSpot.CFrame * CFrame.new(0,40,0)
